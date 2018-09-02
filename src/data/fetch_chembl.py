@@ -1,3 +1,20 @@
+"""Script that downloads ligand and bioactivity data for the receptors.
+Usage
+-----
+python fetch_chembl.py RECEPTOR_TYPE N_PROCS
+
+Arguments
+---------
+RECEPTOR_TYPE: one of 'GPCRs', 'ion-channels', 'kinases', or
+               'nuclear-receptors'
+N_PROCS: number of processes - may speed up processing, but data download may
+         be limited by network speed.
+
+Example
+-------
+python fetch_chembl.py GPCRs 2
+"""
+
 from multiprocessing import Pool
 import os
 import sys
@@ -39,14 +56,6 @@ def fetch_ligs(gene_id):
 
 
 if __name__ == "__main__":
-    """Script that downloads ligand and bioactivity data for the receptors.
-    Usage: python3 fetch_chembl.py RECEPTOR_TYPE, N_PROCS
-    Arguments
-    ---------
-    rtype: one of 'GPCRs', 'ion-channels', 'kinases', or
-                   'nuclear-receptors'
-    n_procs: number of processes
-    """
     rtype = sys.argv[1]
     n_procs = int(sys.argv[2])
 
