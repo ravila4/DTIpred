@@ -26,7 +26,7 @@ from tqdm import tqdm
 
 
 def fetch_ligs(gene_id):
-    """Fetch ia gene's ligands and their bioactivity from the ChEMBL database.
+    """Fetch a gene's ligands and their bioactivity from the ChEMBL database.
     Writes a csv file for each gene.
     Parameters
     ----------
