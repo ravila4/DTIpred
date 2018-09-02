@@ -5,31 +5,34 @@ Machine learning models for predicting drug-target interactions (DTIs) and other
 ## Project Organization
 
     ├── LICENSE
-    ├── README.md          <- The top-level README for developers using this project.
+    ├── README.md
     ├── data
-    │   ├── external       <- Data from third party sources.
-    │   ├── interim        <- Intermediate data that has been transformed.
-    │   ├── processed      <- The final, canonical data sets for modeling.
-    │   └── raw            <- The original, immutable data dump.
+    │   ├── 01_pharos_raw_data
+    │   ├── 02_receptor_ids
+    │   ├── 03_ligand_smiles
+    │   ├── 04_sequences
+    │   ├── 05_mol2vec     <- Featurized ligand data
+    │   └── 06_prot2vec    <- Featurized protein data
     │
     ├── models             <- Trained models.
     │
     ├── notebooks          <- Jupyter notebooks.
     │
-    ├── references         <- Data dictionaries, manuals, and all other explanatory materials.
+    ├── references         <- Relevant publications and bibliography materials.
     │
-    ├── reports            <- Generated analysis PDF and LaTeX.
+    ├── reports            <- Generated analysis PDF and LaTeX. PDFs for Jupyter notebooks.
     │   └── figures        <- Graphics and figures.
     │
     ├── requirements.txt   <- The requirements file for reproducing the analysis environment.
     │
-    ├── setup.py           <- makes project pip installable (pip install -e .) so src can be imported.
+    ├── setup.py           <- Makes project pip installable (pip install -e .) so src can be imported.
     │
     └── src                <- Source code for use in this project.
         ├── __init__.py    <- Makes src a Python module
         │
         ├── data           <- Scripts to download or generate data.
-        │   └── make_dataset.py
+        │   ├── fetch_chembl.py
+        │   └── get_sequences.py
         │
         ├── features       <- Scripts to turn raw data into features for modeling
         │   └── build_features.py
