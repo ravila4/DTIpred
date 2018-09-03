@@ -43,7 +43,7 @@ def featurize(ligand_data, trained_model, outpath):
             data['words'][i] = list(fingerprint)
             i += 1
             pbar.update()
-    pickle.dump(data, open("fingerprints.pkl", 'wb'))
+    pickle.dump(data, open(outpath + "/fingerprints.pkl", 'wb'))
 
     print("Finding unique fingerprints.")
     all_words = np.array(
@@ -52,7 +52,7 @@ def featurize(ligand_data, trained_model, outpath):
 
     # Create a data frame of embeddings
     print("Storing embeddings.")
-    model = word2vec.Word2Vec.load('model_300dim.pkl')
+    model = word2vec.Word2Vec.load(trained_model)
     embeddings = {}
     for word in unique_words:
         try:
@@ -60,7 +60,7 @@ def featurize(ligand_data, trained_model, outpath):
         except:
             embeddings[word] = np.zeros(300)
     embeddings = pd.DataFrame(embeddings)
-    pickle.dump(embeddings, open("embeddings.pkl", 'wb'))
+    pickle.dump(embeddings, open(outpath + "/embeddings.pkl", 'wb'))
 
     # Create a data frame to store ligand vectors
     vectors = {}
@@ -74,13 +74,13 @@ def featurize(ligand_data, trained_model, outpath):
     vectors = pd.DataFrame(vectors).T
 
     print("Writing csv file.")
-    pickle.dump(vectors, open("vectors.pkl", 'wb'))
-    vectors.to_csv("ligand_vectors.csv")
+    pickle.dump(vectors, open(outpath + "/vectors.pkl", 'wb'))
+    vectors.to_csv(outpath + "/ligand_vectors.csv")
 
 
 if __name__ == "__main__":
     project_dir = Path(__file__).resolve().parents[2]
     data_file = str(project_dir) + "/data/05_mol2vec/all_unique_ligands.csv"
     output_dir = str(project_dir) + "/data/05_mol2vec"
-    trained_model = project_dir + "/src/features/model_300dim.pkl"
-    featurize(data_file, output_dir)
+    model = project_dir + "/src/features/model_300dim.pkl"
+    featurize(data_file, model, output_dir)
