@@ -82,5 +82,5 @@ if __name__ == "__main__":
     project_dir = Path(__file__).resolve().parents[2]
     data_file = str(project_dir) + "/data/05_mol2vec/all_unique_ligands.csv"
     output_dir = str(project_dir) + "/data/05_mol2vec"
-    model = project_dir + "/src/features/model_300dim.pkl"
+    model = str(project_dir) + "/src/features/model_300dim.pkl"
     featurize(data_file, model, output_dir)
