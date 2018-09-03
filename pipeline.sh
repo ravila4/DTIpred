@@ -1,8 +1,8 @@
 # Download data
-python src/data/fetch_chembl GPCRs 4
-python src/data/fetch_chembl ion-channels 4
-python src/data/fetch_chembl kinases 4
-python src/data/fetch_chembl receptors 4
+python src/data/fetch_chembl.py GPCRs 4
+python src/data/fetch_chembl.py ion-channels 4
+python src/data/fetch_chembl.py kinases 4
+python src/data/fetch_chembl.py receptors 4
 
 ./src/data/get_sequences.sh GPCRs
 ./src/data/get_sequences.sh ion-channels
