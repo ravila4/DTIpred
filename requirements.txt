@@ -1,5 +1,6 @@
 # local package
 chembl_webresource_client
+gensim
 jupyter
 matplotlib
 mol2vec
@@ -10,6 +11,5 @@ rdkit
 scikit-learn
 seaborn
 tqdm
-
 
 # external requirements
